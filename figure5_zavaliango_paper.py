@@ -49,7 +49,7 @@ for k in range(len(V)):
     N_t = num_step[k]                                                               #The number of time steps is smaller for higher punch velocities
     for i in range(N_t):
         dz[i][k] = H[i][k]/N_L                                                      #increment size in z direction, which depends on time and punch velocities. It is getting smaller with time because the compacts are shrinking
-        K [i][k] = r[0].a * np.exp(r[0].b*D[i][k])*abs(1-D[i][k]+r[0].c)**r[0].d
+        K [i][k] = r[0].a * np.exp(r[0].b*D[i][k])*abs(1-D[i][k]+r[0].c)**r[0].d    #permeability of Avicel-PH102
         if (i<N_t-1):
             H[i+1][k] = H[i][k] - V[k]*dt
             D[i+1][k] = D[0][k]*H[0][k]/H[i+1][k]
