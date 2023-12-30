@@ -7,25 +7,28 @@
 import numpy as np
 import math
 import matplotlib.pyplot as plt
-from material import *                                                                      #constructor
+from material import *                                                                                      #constructor: my database for permeability data
 #from numpy import array
 
-Patm = 1                                                                                    #atmospheric pressure (atm)
-mu = 18.6*10**-6                                                                            #viscosity of air at 25 C (kg/m.s)
-N_L = 16                                                                                    #number of numerical nodes in the compact
+Patm = 1                                                                                                    #atmospheric pressure (atm)
+mu = 18.6*10**-6                                                                                            #viscosity of air at 25 C (kg/m.s)
+N_L = 16                                                                                                    #number of numerical nodes in the compact
 
-V = [10, 100, 10**3, 10**4, 10**5, 10**6]                                                       # punch velocity (mm/s)
-dt = [10**-6, 10**-6,  10**-6, 10**-6, 10**-6, 10**-7]                                       # time step (s)
-duration = [0.5835, 0.05835, 0.005835, 0.0005835, 0.00005835, 0.000005835]           # duration of the simulation (s)
-P_max = np.ones(len(V))                                                                             # height of the compact (mm)
+V = [10, 100, 10**3, 10**4, 10**5, 10**6]                                                                   # punch velocity (mm/s)
+dt = [10**-6, 10**-6,  10**-6, 10**-6, 10**-6, 10**-7]                                                      # time step (s)
+duration = [0.5835, 0.05835, 0.005835, 0.0005835, 0.00005835, 0.000005835]                                  # duration of the simulation (s)
 
-N_t = int(duration[0]/dt[0]+1)                                                                 #number of time steps for running the simulation. N_t will be shorter for high punch velocity
+## maximum pressure inside the compact, which occurs at the center
+# of the compact in a symmetrical compaction
+P_max = np.ones(len(V))
+
+N_t = int(duration[0]/dt[0]+1)                                                                              #number of time steps for running the simulation. N_t will be shorter for high punch velocity
 num_step = np.zeros(len(V))
 for i in range(len(duration)):
-    num_step[i] = int(duration[i]/dt[i])+1                                                     #number of time steps for respectively low and high punch velocities
-H_I = 8
-D_I = 0.23
-phi_I = 1 - D_I
+    num_step[i] = int(duration[i]/dt[i])+1                                                                  #number of time steps for respectively low and high punch velocities
+H_I = 8                                                                                                     #initial heigh of the compact (mm)
+D_I = 0.23                                                                                                  #initial relative density
+phi_I = 1 - D_I                                                                                             #initial porosity
 H = H_I * np.ones((N_t,len(V)))                                                                             # height of the compact (mm)
 D = D_I * np.ones((N_t,len(V)))                                                                             # relative density
 phi = 1 - D                                                                                                 # porosity
