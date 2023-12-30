@@ -7,10 +7,8 @@
 ## Two punch velocities of 100 mm/s and 1000 mm/s are considered.
 
 import numpy as np
-import math
 import matplotlib.pyplot as plt
 from material import *                                                      # constructor
-#from numpy import array
 
 Patm = 1                                                                    #atmospheric pressure (atm)
 mu = 18.6*10**-6                                                            #viscosity of air at 25 C (kg/m.s)
