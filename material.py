@@ -8,6 +8,7 @@ class material:
         self.c = c                                      #third parameter for permeability
         self.d = d                                      #fourth parameter for permeability
 
+#
 # K = a*exp(b*D)*(1-D-c)^d
 # K is permeability and D is the relative density (=1-porosity): see equations 12 and 13 in
 # Zavaliangos, Antonios, et al. "Prediction of air entrapment in tableting: an approximate solution."
