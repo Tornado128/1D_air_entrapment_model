@@ -3,7 +3,7 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
-from material import *                                                                                          #constructor
+from material import *                                                                                          ##constructor: database of materials
 
 Patm = 1                                                                                                        #atmospheric pressure (atm)
 mu = 18.6*10**-6                                                                                                #viscosity of air at 25 C (kg/m.s)
@@ -16,20 +16,21 @@ L = d1 * 0.21                                                                   
 area = 0.25*np.pi*(d1*d1)                                                                                       # punch area (mm^2)
 d2 = d1 + 53/1000                                                                                               # die diameter (mm)
 dt = 10**-7                                                                                                     # time step (s): The time steps are chosen in a way to produce the same number of time steps
-duration = [0.011911, 0.010422, 0.008933, 0.008189, 0.007445, 0.0067, 0.005956]                                # duration of the simulation (s)
+duration = [0.011911, 0.010422, 0.008933, 0.008189, 0.007445, 0.0067, 0.005956]                                 ## duration of the simulation (s).
+                                                                                                                # To get to the same final relative density, the simulation time is longer for larger initial height
 
-N_t = int(duration[0]/dt+1)                                                                                     #number of time steps (longest) for running the simulation. N_t will be shorter for high punch velocity
-num_step = np.zeros(len(duration))
+N_t = int(duration[0]/dt+1)                                                                                     #number of time steps (longest) for running the simulation.
+num_step = np.zeros(len(duration))                                                                              # Each height, we will run for a "num_step". N_t is just for defining the big pressure matrix. Many of the elemnts will be zero for pressure matrix
 for i in range(len(duration)):
     num_step[i] = int(duration[i]/dt+1)                                                                         #number of time steps for running for each height of the compact
 
 H_I = [16, 14, 12, 11, 10, 9, 8]                                                                                #initial heigh of the compacts (mm)
-D_I = r[0].e * np.ones((N_t,len(duration)))                                                                     #initial relative density
+D_I = r[0].e * np.ones((N_t,len(duration)))                                                                     #initial relative density (from material.py)
 phi_I = 1 - D_I                                                                                                 #initial porosity
-H = np.ones((N_t,len(duration)))                                                                                # initialization of the height of the compact (mm)
-D = D_I * np.ones((N_t,len(duration)))                                                                          # initialization of the relative density
-phi = 1 - D                                                                                                     # initialization of the porosity
-K = np.ones((N_t,len(duration)))                                                                                # initialization of the permeability (mm^2)
+H = np.ones((N_t,len(duration)))                                                                                # initialization of the height of the compact matrix (mm)
+D = D_I * np.ones((N_t,len(duration)))                                                                          # initialization of the relative density matrix
+phi = 1 - D                                                                                                     # initialization of the porosity matrix
+K = np.ones((N_t,len(duration)))                                                                                # initialization of the permeability matrix (mm^2)
 
 #defining and initilization of the air entrapment pressure (atm)
 P = np.ones((N_t, N_L, len(duration)))
