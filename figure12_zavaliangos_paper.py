@@ -1,4 +1,5 @@
-
+## This piece of code generates figure 12 in Zavaliangos et al, J. Pharmaceutical Sciences, 106 (2017) 3604-36012
+## This piece of code compare Avicel PH102 with Lactose 316 at symmetrical compaction of punch velocity of 1000 mm/s
 
 import pandas as pd
 import numpy as np
