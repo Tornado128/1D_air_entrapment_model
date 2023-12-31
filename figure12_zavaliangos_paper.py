@@ -24,7 +24,7 @@ num_step = np.zeros(len(duration))
 for i in range(len(duration)):
     num_step[i] = int(duration[i]/dt+1)                                                                         #number of time steps for running for each height of the compact
 
-H_I = [8, 8]                                                                                                  #initial heigh of the compacts (mm)
+H_I = [8, 8]                                                                                                    #initial heigh of the compacts (mm)
 D_I = [r[0].e, r[1].e]                                                                                          #initial relative density for Avicel PH102 and Lactose 316
 phi_I = [1-r[0].e, 1-r[1].e]                                                                                    #initial porosity
 D = np.ones((len(duration),N_t))                                                                                #initial relative density
