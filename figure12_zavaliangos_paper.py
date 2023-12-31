@@ -1,10 +1,9 @@
 ## This piece of code generates figure 12 in Zavaliangos et al, J. Pharmaceutical Sciences, 106 (2017) 3604-36012
 ## This piece of code compare Avicel PH102 with Lactose 316 at symmetrical compaction of punch velocity of 1000 mm/s
 
-import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from material import *                                                                                          #constructor
+from material import *                                                                                          #constructor: database of materials
 
 Patm = 1                                                                                                        #atmospheric pressure (atm)
 mu = 18.6*10**-6                                                                                                #viscosity of air at 25 C (kg/m.s)
@@ -18,25 +17,28 @@ d2 = d1 + gap/1000                                                              
 
 area = 0.25*np.pi*(d1*d1)                                                                                       # punch area (mm^2)
 dt = 10**-7                                                                                                     # time step (s)
-duration = [0.00610, 0.0044]                                                                                    # duration of the simulation, which is different for the two materials (s)
+duration = [0.00610, 0.0044]                                                                                    # duration of the simulation to reach around relative density of 0.97, which is different for the two materials (s)
 
-N_t = int(duration[0]/dt+1)                                                                                     #number of time steps (longest) for running the simulation. N_t will be shorter for high punch velocity
+N_t = int(duration[0]/dt+1)                                                                                     #number of time steps (longest) for running the simulation.
 num_step = np.zeros(len(duration))
 for i in range(len(duration)):
     num_step[i] = int(duration[i]/dt+1)                                                                         #number of time steps for running for each height of the compact
 
 H_I = [8, 8]                                                                                                    #initial heigh of the compacts (mm)
-D_I = [r[0].e, r[1].e]                                                                                          #initial relative density for Avicel PH102 and Lactose 316
+D_I = [r[0].e, r[1].e]                                                                                          #initial relative density for Avicel PH102 and Lactose 316: It reads the constructor file
 phi_I = [1-r[0].e, 1-r[1].e]                                                                                    #initial porosity
-D = np.ones((len(duration),N_t))                                                                                #initial relative density
-H = np.ones((len(duration),N_t))                                                                                #initialization of the height of the compact (mm)
-K = np.ones((len(duration),N_t))                                                                                #initialization of the permeability (mm^2)
-phi = np.zeros((len(duration),N_t))                                                                             #initialization of porosity
+D = np.ones((len(duration),N_t))                                                                                #initializing relative density matrix
+H = np.ones((len(duration),N_t))                                                                                #initialization of the height of the compact matrix (mm)
+K = np.ones((len(duration),N_t))                                                                                #initialization of the permeability matrix (mm^2)
+phi = np.zeros((len(duration),N_t))                                                                             #initialization of porosity matrix
 
 
 #defining and initilization of the air entrapment pressure (atm)
 P = np.ones((len(duration),N_t, N_L))
 
+# The first outside loop goes through the two materials
+# The second loop goes through time steps
+# The third loop goes through the position steps
 for k in range(len(H_I)):
     H[k][0] = H_I[k]
     N_t = int(num_step[k])                                                                      #The number of time steps is smaller for higher punch velocities
