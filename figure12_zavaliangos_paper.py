@@ -9,7 +9,7 @@ Patm = 1                                                                        
 mu = 18.6*10**-6                                                                                                #viscosity of air at 25 C (kg/m.s)
 N_L = 16                                                                                                        #number of numerical nodes in the compact
 
-V = 100                                                                                                        # punch velocity (mm/s)
+V = 1000                                                                                                       # punch velocity (mm/s)
 d1 = 10                                                                                                         # punch diameter (mm)
 L = d1 * 0.25                                                                                                   # length of punch die-gap (mm)
 gap = 40                                                                                                        # gap between punch and die (micron)
