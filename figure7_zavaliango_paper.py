@@ -31,7 +31,7 @@ for i in range(len(duration)):
     num_step[i] = int(duration[i]/dt[i]+1)                                                                      #number of time steps for respectively low and high punch velocities
 
 H_I = 8                                                                                                         #initial heigh of the compact (mm)
-D_I = 0.23                                                                                                      #initial relative density
+D_I = r[0].e                                                                                                      #initial relative density
 phi_I = 1 - D_I                                                                                                 #initial porosity
 H = H_I * np.ones((N_t,len(dt)))                                                                                # height of the compact (mm)
 height = H_I * np.ones((N_L,len(dt)))                                                                           # height of the compact (mm)

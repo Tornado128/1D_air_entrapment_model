@@ -36,7 +36,7 @@ dz = np.zeros((N_t, len(V)))
 
 H[0][0] = 8                                                                         #initial height of the compact under low velocity (mm)
 H[0][1] = H[0][0]                                                                   #initial height of the compact under high velocity
-D[0][0] = 0.23                                                                      #initial relative density of the compact under low velocity
+D[0][0] = r[0].e                                                                      #initial relative density of the compact under low velocity
 D[0][1] = D[0][0]                                                                   #initial relative density of the compact under high velocity
 phi[0][0] = 1 - D[0][0]                                                             #initial porosity of the compact under low velocity
 phi[0][1] = phi[0][0]                                                               #initial porosity of the compact under high velocity
