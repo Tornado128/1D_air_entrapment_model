@@ -30,21 +30,19 @@ for i in range(len(duration)):
 H_I = 8                                                                                                     #initial heigh of the compact (mm)
 D_I = r[0].e                                                                                                  #initial relative density
 phi_I = 1 - D_I                                                                                             #initial porosity
-H = H_I * np.ones((N_t,len(V)))                                                                             # height of the compact (mm)
-D = D_I * np.ones((N_t,len(V)))                                                                             # relative density
-phi = 1 - D                                                                                                 # porosity
-K = np.ones((N_t,len(V)))                                                                                   # permeability (mm^2)
+H = H_I * np.ones((N_t,len(V)))                                                                             # initialization of the height of the compact matrix (mm)
+D = D_I * np.ones((N_t,len(V)))                                                                             # initialization of relative density matrix
+phi = 1 - D                                                                                                 # initialization of porosity matrix
+K = np.ones((N_t,len(V)))                                                                                   # permeability matrix(mm^2)
+
 ## dz is the spatial increment in the vertical direction. As the compacts will be shrinking in size, the increment will
 # be shrinking with time (m)
 dz = np.zeros((N_t, len(V)))
-#H[0] = 8                                                                                    # initial (t=0 second) height of the compact (mm)
-#D[0] = 0.23                                                                                 # initial (t=0 second) relative density
-#phi[0] = 1 - D[0]                                                                           # initial porosity
 
-#print(r[0].a, r[0].b, r[0].c, r[0].d)
-P = np.ones((N_t, N_L, len(V)))                                                     #defining and initilization of the air entrapment pressure to 1 atm for all the nodes at all the time steps
+## defining and initilization of the air entrapment pressure to 1 atm for all the nodes at all the time steps
+P = np.ones((N_t, N_L, len(V)))
 
-# looping over compacts (different punch velocities) and time steps
+## looping over compacts (different punch velocities), time steps and nodes in the compact
 for k in range(len(V)):
     print(k)
     N_t = num_step[k]                                                               #The number of time steps is smaller for higher punch velocities
