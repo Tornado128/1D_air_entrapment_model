@@ -17,6 +17,7 @@ duration = 0.00596                                                              
 d2 = np.arange(d1 + 0.0000001, d1 + 0.150, 0.005).tolist()                          #die diameter (mm)
 area = np.pi*d1*d1/4                                                                #cross sectional area of the tablet
 
+
 # gap between the punch and die (mm)
 gap = np.zeros(len(d2))
 
