@@ -1,4 +1,4 @@
-(1) I have reproduced the 1D model developed by "Zavaliangos, Antonios, et al. "Prediction of air entrapment in tableting: an approximate solution." Journal of pharmaceutical sciences 106.12 (2017): 3604-3612."
+(1) I have reproduced the 1D model developed by "Zavaliangos, Antonios, et al. Prediction of air entrapment in tableting: an approximate solution." Journal of pharmaceutical sciences 106.12 (2017): 3604-3612."
 to predict air pressure distribution inside a cylinderical tablet under symmetrical compaction. A nonlinear transiet 1D PDE has been solved numerically.
 ---
 (2) The motivation to replicate the results of this paper is that one of the main mechanism behind lamination of the tablets is the "excessive" air entrapment. This mechanism is the manifestation of the interplay between maximum air pressure inside the tablet and the tensile
