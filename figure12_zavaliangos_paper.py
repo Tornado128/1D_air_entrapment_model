@@ -68,16 +68,6 @@ for k in range(len(H_I)):
                 else:
                     P[k][i+1][j] = P[k][i+1][j-1]
 
-    #P_max [k] = P[int(num_step[k]-1), N_L-1,k]                 # pressure center of the tablet for each final relative density
-    #print(H_I[k], P_max[k])
-
-#print(D[1,:int(num_step[1])])
-#dataframe_pressure = pd.DataFrame({'Avicel PH102': P[0,:,N_L-1], 'Lactose 316': P[1,:,N_L-1]})
-#print(dataframe_pressure)
-
-#dataframe_relative_density = pd.DataFrame({'Avicel PH102': D[0,:], 'Lactose 316': D[1,:]})
-#print(dataframe_relative_density)
-
 plt.semilogy(D[0,:int(num_step[0])], P[0,:int(num_step[0]),N_L-1], 'b-', D[1,:int(num_step[1])], P[1,:int(num_step[1]),N_L-1], 'r-',linewidth=3)
 plt.xlabel("relative density",fontsize=24)
 plt.ylabel("P_max/P_atm",fontsize=24)
