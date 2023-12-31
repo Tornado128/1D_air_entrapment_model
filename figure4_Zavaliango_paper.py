@@ -12,7 +12,6 @@ import numpy as np
 P0 = 1                                                                         #atmospheric pressure (atm)
 step = 0.05                                                                    #steps in porosity and relative density
 
-
 phi1 = np.arange(0.05, 0.8 + step, step).tolist()                              #discretizing from 0 to 0.8 with step size equals 'step'
 D1 = [1-i for i in phi1]                                                       #relative density
 size1 = len(D1)                                                                #size of the list
