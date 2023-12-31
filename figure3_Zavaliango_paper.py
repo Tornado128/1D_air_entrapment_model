@@ -35,5 +35,3 @@ plt.grid(True, which ="both")
 plt.legend(["%s"%r[0].name, "%s"%r[1].name, "%s"%r[2].name, "%s"%r[3].name], loc ="lower left", fontsize=22)
 plt.show()
 
-
-
