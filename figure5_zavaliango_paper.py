@@ -15,7 +15,7 @@ mu = 18.6*10**-6                                                            #vis
 N_L = 16                                                                    #number of numerical nodes in the compact
 
 V = [100, 1000]                                                             #punch velocity (mm/s): we are assuming that both punches are moving at the same velocity
-duration = [0.052, 0.0052]                                                  #duration of the simulation (second)
+duration = [0.061, 0.0061]                                                #duration of the simulation (second)
 
 dt = 10**-6                                                                 #time step (second): time step should be as small as possible to avoid any numerical divergence
 N_t = int(duration[0]/dt)+1                                                 #number of time steps for running the simulation. N_t will be shorter for high punch velocity
@@ -36,7 +36,7 @@ dz = np.zeros((N_t, len(V)))
 
 H[0][0] = 8                                                                         #initial height of the compact under low velocity (mm)
 H[0][1] = H[0][0]                                                                   #initial height of the compact under high velocity
-D[0][0] = 0.33                                                                      #initial relative density of the compact under low velocity
+D[0][0] = 0.23                                                                      #initial relative density of the compact under low velocity
 D[0][1] = D[0][0]                                                                   #initial relative density of the compact under high velocity
 phi[0][0] = 1 - D[0][0]                                                             #initial porosity of the compact under low velocity
 phi[0][1] = phi[0][0]                                                               #initial porosity of the compact under high velocity
@@ -69,7 +69,7 @@ for k in range(len(V)):
 
 ## fully entrapped air scenario
 step = 0.01                                                                     #steps in porosity and relative density
-D1 = np.arange(0.33, 0.92 + step, step).tolist()                              #discretizing from 0 to 0.8 with step size equals 'step'
+D1 = np.arange(0.23, 0.95 + step, step).tolist()                              #discretizing from 0 to 0.8 with step size equals 'step'
 size1 = len(D1)                                                                #size of the list
 ratio1 = np.zeros(size1)
 for i in range(size1):
