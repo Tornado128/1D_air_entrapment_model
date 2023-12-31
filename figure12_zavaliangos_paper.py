@@ -13,7 +13,8 @@ N_L = 16                                                                        
 V = 1000                                                                                                        # punch velocity (mm/s)
 d1 = 10                                                                                                         # punch diameter (mm)
 L = d1 * 0.25                                                                                                   # length of punch die-gap (mm)
-d2 = d1 + 40/1000                                                                                               # die diameter (mm)
+gap = 40                                                                                                        # gap between punch and die (micron)
+d2 = d1 + gap/1000                                                                                              # die diameter (mm)
 
 area = 0.25*np.pi*(d1*d1)                                                                                       # punch area (mm^2)
 dt = 10**-7                                                                                                     # time step (s)
@@ -63,7 +64,7 @@ for k in range(len(H_I)):
                     if (j == 1):
                         lambdai = d2 / d1  # die diameter tp punch diameter ratio
                         f = lambdai ** 4 - 1 - ((lambdai ** 2 - 1) ** 2) / np.log(lambdai)                                                  # see Eq. (18) of Zavaliangos et al, J. Pharmaceutical Sciences, 106 (2017) 3604-36012
-                        alpha = np.pi * dz * f * d1 * d1 * d1 * d1 / (128 * K[k][i] * area * (1 - D[k][i]) * (L + H_I[k] - H[k][i]))           # see Eq. (19) of Zavaliangos et al, J. Pharmaceutical Sciences, 106 (2017) 3604-36012
+                        alpha = np.pi * dz * f * d1 * d1 * d1 * d1 / (128 * K[k][i] * area * (1 - D[k][i]) * (L + H_I[k] - H[k][i]))        # see Eq. (19) of Zavaliangos et al, J. Pharmaceutical Sciences, 106 (2017) 3604-36012
                         P[k][i + 1][j - 1] = ((P[k][i + 1][j] ** 2 + alpha * Patm * Patm) / (1 + alpha)) ** 0.5                             # see Eq. (19) of Zavaliangos et al, J. Pharmaceutical Sciences, 106 (2017) 3604-36012
                 else:
                     P[k][i+1][j] = P[k][i+1][j-1]
@@ -77,6 +78,5 @@ plt.xticks(fontsize=18)
 plt.yticks(fontsize=18)
 plt.grid(True, which ="both")
 plt.legend(["Avicel PH-102", "Lactose 316"], fontsize=28)
+plt.title("Maximum air pressure at the center of the tablets using dual compaction at %0.0f" %V + f" mm/s and die-punch gap of %0.0f" %gap + f" micron", fontsize=18)
 plt.show()
-#dataframe_height = pd.DataFrame({'D_final=60%': height[:, 0], 'D_final=80%': height[:, 0], 'D_final=95%': height[:, 0]})
-#print(dataframe_height)
