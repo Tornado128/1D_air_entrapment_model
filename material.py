@@ -1,4 +1,5 @@
-# This constructor defines the properties of different materials
+# This constructor defines the properties of different materials including permeability and initial relative density
+# The permeability equation is the same as Eq. (12) and Eq. (13) of Zavaliangos, Antonios, et al. "Prediction of air entrapment in tableting: an approximate solution." Journal of pharmaceutical sciences 106.12 (2017): 3604-3612.
 
 class material:
     def __init__(self, name, a, b, c, d, e):
