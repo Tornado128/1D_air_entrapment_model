@@ -12,13 +12,13 @@ mu = 18.6*10**-6                                                                
 N_L = 16                                                                            #number of numerical nodes in the compact
 
 dt = 3*10**-8                                                                       #time step (second): time step should be as small as possible to avoid any numerical divergence
-V = 1000                                                                            #punch velocity (mm/s): we are assuming that both punches are moving at the same velocity
+V = 1000                                                                           #punch velocity (mm/s): we are assuming that both punches are moving at the same velocity
 duration = 0.00596                                                                  #duration of the simulation (second)
 d2 = np.arange(d1 + 0.0000001, d1 + 0.150, 0.005).tolist()                          #die diameter (mm)
 area = np.pi*d1*d1/4                                                                #cross sectional area of the tablet
 
 
-# gap between the punch and die (mm)
+## gap between the punch and die (mm)
 gap = np.zeros(len(d2))
 
 
